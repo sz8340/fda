@@ -5,6 +5,7 @@
   <frameset cols="15%,85%">
      <FRAME SRC="leftindex.html" NAME="Left frame" > 
      <FRAME SRC="about:blank" NAME="Right frame"> 
+       <image src='docker-feature-image.png'> </frame>
   </frameset>
 </frameset>
 
