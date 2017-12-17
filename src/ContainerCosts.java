@@ -24,7 +24,7 @@ public class ContainerCosts extends HttpServlet
     {
         String loginUser = "root";
         String loginPasswd = "root!";
-        String loginUrl = "jdbc:mysql://mysql1:3306/fda";
+        String loginUrl = "jdbc:mysql://172.20.0.3:3306/fda";
 
         response.setContentType("text/html");    // Response mime type
 
