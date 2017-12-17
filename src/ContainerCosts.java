@@ -22,9 +22,9 @@ public class ContainerCosts extends HttpServlet
     public void doGet(HttpServletRequest request, HttpServletResponse response)
         throws IOException, ServletException
     {
-        String loginUser = "Dude1";
-        String loginPasswd = "SuperSecret7!";
-        String loginUrl = "jdbc:mysql://localhost:3306/fda";
+        String loginUser = "root";
+        String loginPasswd = "root!";
+        String loginUrl = "jdbc:mysql://mysql1:3306/fda";
 
         response.setContentType("text/html");    // Response mime type
 
