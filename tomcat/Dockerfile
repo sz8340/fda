@@ -141,7 +141,7 @@ RUN set -e \
 	fi
 
 EXPOSE 8080
-COPY dist/fda.war /usr/local/tomcat/webapps
+COPY ../dist/fda.war /usr/local/tomcat/webapps
 #CMD ["/usr/local/tomcat/bin/catalina.sh", "start", "&&", "sleep", "infinity"]
 CMD /usr/local/tomcat/bin/catalina.sh start && sleep infinity
 
