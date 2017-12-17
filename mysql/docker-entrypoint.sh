@@ -55,10 +55,6 @@ if [ "$1" = 'mysqld' ]; then
 		fi
 	fi
 
-	CREATE USER 'Dude1'@'localhost' IDENTIFIED BY 'SuperSecret7!';
-	CREATE USER 'Dude1'@'%' IDENTIFIED BY 'SuperSecret7!';
-	GRANT ALL on *.* to 'Dude1'@'%' IDENTIFIED BY 'SuperSecret7!';
-	FLUSH PRIVILEGES;
 	if [ ! -d "$DATADIR/mysql" ]; then
 		# If the password variable is a filename we use the contents of the file. We
 		# read this first to make sure that a proper error is generated for empty files.
@@ -119,10 +115,12 @@ if [ "$1" = 'mysqld' ]; then
 			ROOTCREATE="ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}'; \
 			CREATE USER 'root'@'${MYSQL_ROOT_HOST}' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}'; \
 			GRANT ALL ON *.* TO 'root'@'${MYSQL_ROOT_HOST}' WITH GRANT OPTION ; \
-			GRANT PROXY ON ''@'' TO 'root'@'${MYSQL_ROOT_HOST}' WITH GRANT OPTION ;"
+			GRANT PROXY ON ''@'' TO 'root'@'${MYSQL_ROOT_HOST}' WITH GRANT OPTION ;" \
+
 			ROOTCREATE="ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';"
-			CREATE USER 'Dude1'@'localhost' IDENTIFIED BY 'SuperSecret7!';
-			CREATE USER 'Dude1'@'%' IDENTIFIED BY 'SuperSecret7!';
+			CREATE USER 'Dude1'@'localhost' IDENTIFIED BY 'SuperSecret7!'; \
+			CREATE USER 'Dude1'@'%' IDENTIFIED BY 'SuperSecret7!'; \
+			GRANT ALL on *.* to 'Dude1'@'%' IDENTIFIED BY 'SuperSecret7!' WITH GRANT OPTION;
 			${ROOTCREATE}
 			FLUSH PRIVILEGES ;
 		fi
