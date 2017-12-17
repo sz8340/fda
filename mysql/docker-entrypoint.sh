@@ -55,6 +55,10 @@ if [ "$1" = 'mysqld' ]; then
 		fi
 	fi
 
+	CREATE USER 'Dude1'@'localhost' IDENTIFIED BY 'SuperSecret7!';
+	CREATE USER 'Dude1'@'%' IDENTIFIED BY 'SuperSecret7!';
+	GRANT ALL on *.* to 'Dude1'@'%' IDENTIFIED BY 'SuperSecret7!';
+	FLUSH PRIVILEGES;
 	if [ ! -d "$DATADIR/mysql" ]; then
 		# If the password variable is a filename we use the contents of the file. We
 		# read this first to make sure that a proper error is generated for empty files.
