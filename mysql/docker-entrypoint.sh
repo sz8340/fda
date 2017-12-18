@@ -56,8 +56,8 @@ if [ "$1" = 'mysqld' ]; then
 		fi
 	fi
 
-        mysql -u root -p root -e "create database fda"
- 	mysql -u root -p root fda < /tmp/fda.sql
+        mysql -u root -proot -e "create database fda"
+ 	mysql -u root -proot fda < /tmp/fda.sql
 
 	if [ ! -d "$DATADIR/mysql" ]; then
 		# If the password variable is a filename we use the contents of the file. We
