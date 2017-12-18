@@ -31,6 +31,7 @@ if [ "${1:0:1}" = '-' ]; then
 	set -- mysqld "$@"
 fi
 MYSQL_ROOT_PASSWORD="root"
+MYSQL_ROOT_HOST="%"
 echo "[Entrypoint] MySQL Docker Image 5.7.20-1.1.2"
 
 if [ "$1" = 'mysqld' ]; then
@@ -54,6 +55,9 @@ if [ "$1" = 'mysqld' ]; then
 			sed -i 's/^log-error=/#&/' /etc/my.cnf
 		fi
 	fi
+
+        mysql -u root -p root -e "create database fda"
+ 	mysql -u root -p root fda < /tmp/fda.sql
 
 	if [ ! -d "$DATADIR/mysql" ]; then
 		# If the password variable is a filename we use the contents of the file. We
