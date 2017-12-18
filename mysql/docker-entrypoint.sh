@@ -31,7 +31,7 @@ if [ "${1:0:1}" = '-' ]; then
 	set -- mysqld "$@"
 fi
 MYSQL_ROOT_PASSWORD="root"
-MYSQL_ROOT_HOST="%"
+MYSQL_ROOT_HOST="tomcat1"
 echo "[Entrypoint] MySQL Docker Image 5.7.20-1.1.2"
 
 if [ "$1" = 'mysqld' ]; then
@@ -55,9 +55,6 @@ if [ "$1" = 'mysqld' ]; then
 			sed -i 's/^log-error=/#&/' /etc/my.cnf
 		fi
 	fi
-
-        mysql -u root -proot -e "create database fda"
- 	mysql -u root -proot fda < /tmp/fda.sql
 
 	if [ ! -d "$DATADIR/mysql" ]; then
 		# If the password variable is a filename we use the contents of the file. We
@@ -117,20 +114,17 @@ if [ "$1" = 'mysqld' ]; then
 			ROOTCREATE="ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';"
 		else
 			ROOTCREATE="ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}'; \
-			CREATE USER 'root'@'${MYSQL_ROOT_HOST}' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}'; \
 			GRANT ALL ON *.* TO 'root'@'${MYSQL_ROOT_HOST}' WITH GRANT OPTION ; \
-			GRANT PROXY ON ''@'' TO 'root'@'${MYSQL_ROOT_HOST}' WITH GRANT OPTION ;" \
+			CREATE USER 'Dude1'@'tomcat1' IDENTIFIED BY 'SuperSecret7'; \
+			GRANT PROXY ON ''@'' TO 'root'@'${MYSQL_ROOT_HOST}' WITH GRANT OPTION ;" 
 
-			ROOTCREATE="ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';"
-			CREATE USER 'Dude1'@'localhost' IDENTIFIED BY 'SuperSecret7!'; \
-			CREATE USER 'Dude1'@'%' IDENTIFIED BY 'SuperSecret7!'; \
-			GRANT ALL on *.* to 'Dude1'@'%' IDENTIFIED BY 'SuperSecret7!' WITH GRANT OPTION;
 			${ROOTCREATE}
 			FLUSH PRIVILEGES ;
 		fi
 		"${mysql[@]}" <<-EOSQL
 			DELETE FROM mysql.user WHERE user NOT IN ('mysql.session', 'mysql.sys', 'root') OR host NOT IN ('localhost');
 			CREATE USER 'healthchecker'@'localhost' IDENTIFIED BY 'healthcheckpass';
+			CREATE USER 'Dude1'@'tomcat1' IDENTIFIED BY 'SuperSecret7';
 			${ROOTCREATE}
 			FLUSH PRIVILEGES ;
 		EOSQL
@@ -210,13 +204,15 @@ EOF
 	cat >"/healthcheck.cnf" <<EOF
 [client]
 user=healthchecker
+user=Dude1
 socket=${SOCKET}
-password=healthcheckpass
+password=SuperSecret7
 EOF
 	touch /mysql-init-complete
 	chown -R mysql:mysql "$DATADIR"
 	echo "[Entrypoint] Starting MySQL 5.7.20-1.1.2"
-fi
 
+fi
+echo "$@"
 exec "$@"
 
