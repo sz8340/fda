@@ -16,6 +16,7 @@
 
 # The mysql-init-complete file is touched by the entrypoint file before the
 # main server process is started
+myslq -u root -proot fda < /tmp/fda.sql
 if [ -f /mysql-init-complete ]; # The entrypoint script touches this file
 then # Ping server to see if it is ready
   mysqladmin --defaults-extra-file=/healthcheck.cnf ping
