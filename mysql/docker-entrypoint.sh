@@ -33,6 +33,7 @@ if [ "${1:0:1}" = '-' ]; then
 fi
 MYSQL_ROOT_PASSWORD="root"
 MYSQL_ROOT_HOST="tomcat1"
+MYSQL_DATABASE="fda"
 echo "[Entrypoint] MySQL Docker Image 5.7.20-1.1.2"
 
 if [ "$1" = 'mysqld' ]; then
@@ -129,7 +130,7 @@ if [ "$1" = 'mysqld' ]; then
 			#ROOTCREATE="ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';"
 			#${ROOTCREATE}
 
-			FLUSH PRIVILEGES ;
+			#FLUSH PRIVILEGES ;
 		fi
 		"${mysql[@]}" <<-EOSQL
 			DELETE FROM mysql.user WHERE user NOT IN ('mysql.session', 'mysql.sys', 'root') OR host NOT IN ('localhost');
