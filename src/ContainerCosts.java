@@ -1,5 +1,5 @@
 // File: ContainerCosts.java
-   
+
 /* A servlet to display the contents of the MySQL FDA database */
 
 import java.io.*;
