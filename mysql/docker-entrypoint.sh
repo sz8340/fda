@@ -34,7 +34,9 @@ fi
 MYSQL_ROOT_PASSWORD="root"
 MYSQL_ROOT_HOST="tomcat1"
 MYSQL_DATABASE="fda"
+
 echo "[Entrypoint] MySQL Docker Image 5.7.20-1.1.2"
+
 
 if [ "$1" = 'mysqld' ]; then
 	# Test that the server can start. We redirect stdout to /dev/null so
