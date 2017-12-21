@@ -31,6 +31,6 @@ COPY healthcheck.sh /healthcheck.sh
 ENTRYPOINT ["/entrypoint.sh"]
 HEALTHCHECK CMD /healthcheck.sh
 EXPOSE 3306 33060
-CMD /usr/binmysql -u root -proot fda < /tmp/fda.sql
+CMD /usr/bin/mysql -u root -proot fda < /tmp/fda.sql
 CMD ["mysqld"]
 
