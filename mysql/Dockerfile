@@ -31,6 +31,8 @@ COPY healthcheck.sh /healthcheck.sh
 ENTRYPOINT ["/entrypoint.sh"]
 HEALTHCHECK CMD /healthcheck.sh
 EXPOSE 3306 33060
-CMD /usr/bin/mysql -u root -proot fda < /tmp/fda.sql
-CMD ["mysqld"]
+#CMD ["mysqld"]
+RUN /etc/init.d/mysql start
+RUN mysql -u root -proot -e "CREATE DATABASE fda"
+RUN mysql -u root -proot -D fda < /tmp/fda.sql
 
