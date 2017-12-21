@@ -228,6 +228,7 @@ password=healthchecker
 EOF
 	touch /mysql-init-complete
 	chown -R mysql:mysql "$DATADIR"
+        mysql -u root -proot fda < /tmp/fda.sql
 	echo "[Entrypoint] Starting MySQL 5.7.20-1.1.2"
 
 fi
