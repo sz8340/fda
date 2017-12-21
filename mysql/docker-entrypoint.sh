@@ -112,6 +112,7 @@ if [ "$1" = 'mysqld' ]; then
 			MYSQL_ROOT_PASSWORD="$(pwmake 128)"
 			echo "[Entrypoint] GENERATED ROOT PASSWORD: $MYSQL_ROOT_PASSWORD"
 		fi
+			ROOTCREATE="ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';"
 		if [ -z "$MYSQL_ROOT_HOST" ]; then
 			ROOTCREATE="ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';"
 		#else
@@ -141,7 +142,7 @@ if [ "$1" = 'mysqld' ]; then
 			GRANT ALL ON *.* TO 'root'@'${MYSQL_ROOT_HOST}' WITH GRANT OPTION ;
 			GRANT ALL ON *.* TO 'Dude1'@'${MYSQL_ROOT_HOST}' WITH GRANT OPTION ;
 
-			#${ROOTCREATE}
+			${ROOTCREATE}
 			FLUSH PRIVILEGES ;
 		EOSQL
 		if [ ! -z "$MYSQL_ROOT_PASSWORD" ]; then
