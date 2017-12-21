@@ -114,7 +114,7 @@ if [ "$1" = 'mysqld' ]; then
 		fi
 		if [ -z "$MYSQL_ROOT_HOST" ]; then
 			ROOTCREATE="ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';"
-		else
+		#else
 			#ROOTCREATE="ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}'; \
 			#CREATE USER 'root'@'tomcat1' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}'; \
 			#CREATE USER 'Dude1'@'tomcat1' IDENTIFIED BY 'SuperSecret7'; \
