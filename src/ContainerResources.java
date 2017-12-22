@@ -35,14 +35,7 @@ public class ContainerResources extends HttpServlet
         out.println("<BODY><H1>Inventory</H1>");
 
 
-       out.println("<form action='ContainerCosts' method='get'>");
-       out.println("<select name='application'>");
-       out.println("<option value='Toris'>Toris</option>");
-       out.println("<option value='app-2'>app-2</option>");
-       out.println("<option value='app-3'>app-3</option>");
-       out.println("</select>");
-       out.println(" Team <input type='text' size='20' name='team'/> <br>");
-       out.println("<input type='submit' value='Calculate' /> </form>");
+        out.println("<form action='ContainerCosts' method='get'>");
 
 	String app=request.getParameter("application");
 	String team=request.getParameter("team");
@@ -96,6 +89,7 @@ public class ContainerResources extends HttpServlet
                   out.println("<option value=" + m_application_name+">"+m_application_name+"</option>");
               }
               out.println("</select>");
+              out.println("<input type='submit' value='Calculate' /> </form>");
 
 
               rs.close();
