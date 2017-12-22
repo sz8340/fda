@@ -71,11 +71,12 @@ public class ContainerResources extends HttpServlet
               out.println("<select name='team'>");
               while (rs2.next())
               {
-                  String m_team_name = rs.getString("team_name");
+                  String m_team_name = rs2.getString("team_name");
                   out.println("<option value=" + m_team_name+">"+m_team_name+"</option>");
               }
               out.println("</select>");
-              out.println("<input type='submit' value='Submit' /> </form>");
+              out.println("<input type='submit' value='Submit' />");
+              out.println("</form>");
 
               out.println("<button onclick='history.back()'>Go Back</button>");
               rs2.close();
