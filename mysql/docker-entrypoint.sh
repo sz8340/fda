@@ -28,9 +28,9 @@ _get_config() {
 # If command starts with an option, prepend mysqld
 # This allows users to add command-line options without
 # needing to specify the "mysqld" command
-if [ "${1:0:1}" = '-' ]; then
+#if [ "${1:0:1}" = '-' ]; then
 	set -- mysqld "$@"
-fi
+#fi
 MYSQL_ROOT_PASSWORD="root"
 MYSQL_ROOT_HOST="tomcat1"
 MYSQL_DATABASE="fda"
