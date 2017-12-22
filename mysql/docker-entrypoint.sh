@@ -143,7 +143,7 @@ if [ "$1" = 'mysqld' ]; then
 			#REATE USER 'Dude1'@'%' IDENTIFIED BY 'SuperSecret7@'; 
 			#CREATE USER 'root'@'tomcat1' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}'; 
 			#CREATE USER 'Dude1'@'tomcat1' IDENTIFIED BY 'SuperSecret7@'; 
-			GRANT ALL ON *.* TO 'root'@'${MYSQL_ROOT_HOST}' WITH GRANT OPTION ;
+			#GRANT ALL ON *.* TO 'root'@'${MYSQL_ROOT_HOST}' WITH GRANT OPTION ;
 			#GRANT ALL ON *.* TO 'Dude1'@'${MYSQL_ROOT_HOST}' WITH GRANT OPTION ;
 
 			${ROOTCREATE}
@@ -200,7 +200,7 @@ EOF
 				install /dev/null -m0600 -omysql -gmysql "$SQL"
 				if [ ! -z "$MYSQL_ROOT_HOST" ]; then
 					cat << EOF > "$SQL"
-ALTER USER 'root'@'${MYSQL_ROOT_HOST}' PASSWORD EXPIRE;
+#ALTER USER 'root'@'${MYSQL_ROOT_HOST}' PASSWORD EXPIRE;
 ALTER USER 'root'@'localhost' PASSWORD EXPIRE;
 EOF
 				else
