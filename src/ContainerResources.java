@@ -79,36 +79,21 @@ public class ContainerResources extends HttpServlet
               query +=       filter;
 */
 
-String query = "select inventory.container_id, teams.team_name, containers.container_size, containers.container_price, applications.application_name from fda.inventory, fda.teams , fda.containers, fda.applications  where inventory.team_id=teams.id and inventory.container_size=containers.id and inventory.application_id=applications.id " + filter + ";";
+              String query = "select application_name from fda.applications";
               //out.println(query);
 
               // Perform the query
               ResultSet rs = statement.executeQuery(query);
 
-              out.println("<TABLE border>");
-              out.println("<tr>" +
-                              "<td>APPLICATION</td>" +
-                              "<td>TEAM</td>" +
-                              "<td>CONTAINER ID</td>" +
-                              "<td>CONTAINER SIZE</td>" +
-                              "<td>CONTAINER PRICE</td>" +
-                              "</tr>");
+
 
               // Iterate through each row of rs
               while (rs.next())
               {
-                  String m_container_id = rs.getString("container_id");
-                  String m_team_name = rs.getString("team_name");
-                  String m_container_size = rs.getString("container_size");
-                  String m_container_price = rs.getString("container_price");
                   String m_application_name = rs.getString("application_name");
-                  out.println("<tr>" +
-                              "<td>" + m_application_name + "</td>" +
-                              "<td>" + m_team_name + "</td>" +
-                              "<td>" + m_container_id + "</td>" +
-                              "<td align='middle'>" + m_container_size + "</td>" +
-                              "<td align='right'>" + m_container_price + "</td>" +
-                              "</tr>");
+
+                  out.println("<select name='application'>");
+                  out.println("<option value=" + m_application_name+">"+m_application_name+"</option>");
               }
 
 
