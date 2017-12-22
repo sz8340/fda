@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # Copyright (c) 2017, Oracle and/or its affiliates. All rights reserved.
 #
 # This program is free software; you can redistribute it and/or modify
@@ -35,7 +36,7 @@ MYSQL_ROOT_PASSWORD="root"
 echo "[Entrypoint] MySQL Docker Image 5.7.20-1.1.2"
 
 if [ "$1" = 'mysqld' ]; then
-        echo "I'm in"
+        echo "Im in"
 	# Test that the server can start. We redirect stdout to /dev/null so
 	# only the error messages are left.
 	result=0
