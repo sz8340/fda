@@ -31,7 +31,7 @@ COPY healthcheck.sh /healthcheck.sh
 ENTRYPOINT ["/entrypoint.sh"]
 HEALTHCHECK CMD /healthcheck.sh
 EXPOSE 3306 33060
-COPY ./fda.sql /docker-entrypoint-initdb.d/
+COPY fda.sql /docker-entrypoint-initdb.d
 #CMD mysqld && sleep 20 && mysql -u root -proot -e "CREATE DATABASE fda" && mysql -u root -proot -D fda < /tmp/fda.sql && sleep infinity
 CMD mysqld 
 

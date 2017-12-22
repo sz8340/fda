@@ -117,8 +117,8 @@ if [ "$1" = 'mysqld' ]; then
 			GRANT ALL ON *.* TO 'root'@'${MYSQL_ROOT_HOST}' WITH GRANT OPTION ; \
 			GRANT PROXY ON ''@'' TO 'root'@'${MYSQL_ROOT_HOST}' WITH GRANT OPTION ;"
 			ROOTCREATE="ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';"
-			CREATE USER 'Dude1'@'localhost' IDENTIFIED BY 'SuperSecret7!';
-			CREATE USER 'Dude1'@'%' IDENTIFIED BY 'SuperSecret7!';
+			CREATE USER 'Dude1'@'localhost' IDENTIFIED BY 'SuperSecret7@';
+			CREATE USER 'Dude1'@'%' IDENTIFIED BY 'SuperSecret7@';
 			${ROOTCREATE}
 			FLUSH PRIVILEGES ;
 		fi
