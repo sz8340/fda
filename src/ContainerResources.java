@@ -56,7 +56,6 @@ public class ContainerResources extends HttpServlet
               // Iterate through each row of rs
               out.println("<select name='application'>");
               out.println("<option value=''></option>");
-              while (rs2.next())
               while (rs.next())
               {
                   String m_application_name = rs.getString("application_name");
