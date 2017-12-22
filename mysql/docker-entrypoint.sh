@@ -41,13 +41,13 @@ echo "[Entrypoint] MySQL Docker Image 5.7.20-1.1.2"
 if [ "$1" = 'mysqld' ]; then
 	# Test that the server can start. We redirect stdout to /dev/null so
 	# only the error messages are left.
-	result=0
-	output=$("$@" --verbose --help 2>&1 > /dev/null) || result=$?
-	if [ ! "$result" = "0" ]; then
-		echo >&2 '[Entrypoint] ERROR: Unable to start MySQL. Please check your configuration.'
-		echo >&2 "[Entrypoint] $output"
-		exit 1
-	fi
+	#result=0
+	#output=$("$@" --verbose --help 2>&1 > /dev/null) || result=$?
+	#if [ ! "$result" = "0" ]; then
+	#	echo >&2 '[Entrypoint] ERROR: Unable to start MySQL. Please check your configuration.'
+	#	echo >&2 "[Entrypoint] $output"
+	#	exit 1
+	#fi
 
 	# Get config
 	DATADIR="$(_get_config 'datadir' "$@")"
