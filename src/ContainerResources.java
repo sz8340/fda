@@ -55,6 +55,8 @@ public class ContainerResources extends HttpServlet
 
               // Iterate through each row of rs
               out.println("<select name='application'>");
+              out.println("<option value=''></option>");
+              while (rs2.next())
               while (rs.next())
               {
                   String m_application_name = rs.getString("application_name");
@@ -69,6 +71,7 @@ public class ContainerResources extends HttpServlet
               String query2 = "select team_name from fda.teams";
               ResultSet rs2 = statement2.executeQuery(query2);
               out.println("<select name='team'>");
+              out.println("<option value=''></option>");
               while (rs2.next())
               {
                   String m_team_name = rs2.getString("team_name");
@@ -78,7 +81,6 @@ public class ContainerResources extends HttpServlet
               out.println("<input type='submit' value='Submit' />");
               out.println("</form>");
 
-              out.println("<button onclick='history.back()'>Go Back</button>");
               rs2.close();
               statement2.close();
               dbcon.close();
