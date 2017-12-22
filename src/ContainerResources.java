@@ -32,7 +32,7 @@ public class ContainerResources extends HttpServlet
         PrintWriter out = response.getWriter();
 
         out.println("<HTML><HEAD><TITLE>Cost Calculation</TITLE></HEAD>");
-        out.println("<BODY><H1>Cost Calculation</H1>");
+        out.println("<BODY><H1>Inventory</H1>");
 
 
        out.println("<form action='ContainerCosts' method='get'>");
@@ -95,6 +95,7 @@ public class ContainerResources extends HttpServlet
                   out.println("<select name='application'>");
                   out.println("<option value=" + m_application_name+">"+m_application_name+"</option>");
               }
+              out.println("</select>");
 
 
               rs.close();
