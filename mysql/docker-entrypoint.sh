@@ -117,7 +117,6 @@ if [ "$1" = 'mysqld' ]; then
 		else
 			ROOTCREATE="ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}'; \
 			GRANT ALL ON *.* TO 'root'@'${MYSQL_ROOT_HOST}' WITH GRANT OPTION ; \
-			#CREATE USER 'Dude1'@'tomcat1' IDENTIFIED BY 'SuperSecret7'; \
 			GRANT PROXY ON ''@'' TO 'root'@'${MYSQL_ROOT_HOST}' WITH GRANT OPTION ;" 
 
 			${ROOTCREATE}
@@ -126,7 +125,10 @@ if [ "$1" = 'mysqld' ]; then
 		"${mysql[@]}" <<-EOSQL
 			DELETE FROM mysql.user WHERE user NOT IN ('mysql.session', 'mysql.sys', 'root') OR host NOT IN ('localhost');
 			CREATE USER 'healthchecker'@'localhost' IDENTIFIED BY 'healthcheckpass';
+			CREATE USER 'root'@'%' IDENTIFIED BY 'root@';
 			CREATE USER 'Dude1'@'%' IDENTIFIED BY 'SuperSecret7@';
+			GRANT ALL ON *.* TO 'root'@'%' WITH GRANT OPTION ; \
+			GRANT ALL ON *.* TO 'Dude1'@'%' WITH GRANT OPTION ; \
 			${ROOTCREATE}
 			FLUSH PRIVILEGES ;
 		EOSQL
