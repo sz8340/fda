@@ -37,7 +37,6 @@ MYSQL_DATABASE="fda"
 
 echo "[Entrypoint] MySQL Docker Image 5.7.20-1.1.2"
 
-
 if [ "$1" = 'mysqld' ]; then
         echo "mysqld running"
 	# Test that the server can start. We redirect stdout to /dev/null so
