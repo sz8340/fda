@@ -49,6 +49,7 @@ if [ "$1" = 'mysqld' ]; then
 	#	exit 1
 	#fi
 
+        echo "setting datadir"
 	# Get config
 	DATADIR="$(_get_config 'datadir' "$@")"
 	SOCKET="$(_get_config 'socket' "$@")"
