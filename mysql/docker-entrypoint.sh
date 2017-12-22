@@ -126,7 +126,7 @@ if [ "$1" = 'mysqld' ]; then
 		"${mysql[@]}" <<-EOSQL
 			DELETE FROM mysql.user WHERE user NOT IN ('mysql.session', 'mysql.sys', 'root') OR host NOT IN ('localhost');
 			CREATE USER 'healthchecker'@'localhost' IDENTIFIED BY 'healthcheckpass';
-			#CREATE USER 'Dude1'@'tomcat1' IDENTIFIED BY 'SuperSecret7';
+			CREATE USER 'Dude1'@'%' IDENTIFIED BY 'SuperSecret7@';
 			${ROOTCREATE}
 			FLUSH PRIVILEGES ;
 		EOSQL
