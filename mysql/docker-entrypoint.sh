@@ -139,10 +139,10 @@ if [ "$1" = 'mysqld' ]; then
 			DELETE FROM mysql.user WHERE user NOT IN ('mysql.session', 'mysql.sys', 'root') OR host NOT IN ('localhost');
 
 			CREATE USER 'healthchecker'@'localhost' IDENTIFIED BY 'healthcheckpass';
-			CREATE USER 'root'@'%' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}'; 
-			CREATE USER 'Dude1'@'%' IDENTIFIED BY 'SuperSecret7@'; 
-			#CREATE USER 'root'@'tomcat1' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}'; 
-			#CREATE USER 'Dude1'@'tomcat1' IDENTIFIED BY 'SuperSecret7@'; 
+			#CREATE USER 'root'@'%' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}'; 
+			#REATE USER 'Dude1'@'%' IDENTIFIED BY 'SuperSecret7@'; 
+			CREATE USER 'root'@'tomcat1' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}'; 
+			CREATE USER 'Dude1'@'tomcat1' IDENTIFIED BY 'SuperSecret7@'; 
 			GRANT ALL ON *.* TO 'root'@'${MYSQL_ROOT_HOST}' WITH GRANT OPTION ;
 			GRANT ALL ON *.* TO 'Dude1'@'${MYSQL_ROOT_HOST}' WITH GRANT OPTION ;
 
