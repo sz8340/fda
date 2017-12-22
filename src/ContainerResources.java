@@ -37,25 +37,6 @@ public class ContainerResources extends HttpServlet
 
         out.println("<form action='ContainerCosts' method='get'>");
 
-	String app=request.getParameter("application");
-	String team=request.getParameter("team");
-	//String user=request.getParameter("user");
-        String filter = ""; 
-
-        if ( !app.equals("") ) {
-           filter = " and applications.application_name='" + app + "'";
-        }
-
-        if ( !team.equals("") ) {
-          filter += " and teams.team_name='" + team + "'";
-        }
-       /* 
-        if ( !user.equals("") ) {
-          filter += " and user='" + user + "'";
-        }
-*/
-        
-		
         // Load the mm.MySQL driver
         try
            {
@@ -65,12 +46,6 @@ public class ContainerResources extends HttpServlet
               Connection dbcon = DriverManager.getConnection(loginUrl, loginUser, loginPasswd);
               // Declare our statement
               Statement statement = dbcon.createStatement();
-/*
-              String query = "SELECT application, team, ";
-              query +=       "       user, container_size, container_price ";
-              query +=       "FROM   fda.costs ";
-              query +=       filter;
-*/
 
               String query = "select application_name from fda.applications";
               //out.println(query);
@@ -78,38 +53,32 @@ public class ContainerResources extends HttpServlet
               // Perform the query
               ResultSet rs = statement.executeQuery(query);
 
-
-
               // Iterate through each row of rs
+              out.println("<select name='application'>");
               while (rs.next())
               {
                   String m_application_name = rs.getString("application_name");
-
-                  out.println("<select name='application'>");
                   out.println("<option value=" + m_application_name+">"+m_application_name+"</option>");
               }
               out.println("</select>");
               out.println("<input type='submit' value='Calculate' /> </form>");
 
-
               rs.close();
               statement.close();
-              //dbcon.close();
-              //Connection dbcon2 = DriverManager.getConnection(loginUrl, loginUser, loginPasswd);
-              // Declare our statement
+
               Statement statement2 = dbcon.createStatement();
 
-              String query2 = "select sum(containers.container_price) from fda.inventory, fda.teams , fda.containers, fda.applications  where inventory.team_id=teams.id and inventory.container_size=containers.id and inventory.application_id=applications.id " + filter + ";";
+              String query2 = "select team_name from fda.teams";
               ResultSet rs2 = statement2.executeQuery(query2);
+              out.println("<select name='team'>");
               while (rs2.next())
               {
-                  String m_total = rs2.getString("SUM(containers.container_price)");
-                  out.println("<tr>" +
-                              "<td colspan='4'>" + "TOTAL: " + "</td>" +
-                              "<td align='right'>" + m_total + "</td>" +
-                              "</tr>");
+                  String m_team_name = rs.getString("team_name");
+                  out.println("<option value=" + m_team_name+">"+m_team_name+"</option>");
               }
-              out.println("</TABLE>");
+              out.println("</select>");
+              out.println("<input type='submit' value='Submit' /> </form>");
+
               out.println("<button onclick='history.back()'>Go Back</button>");
               rs2.close();
               statement2.close();
