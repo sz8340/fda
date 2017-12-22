@@ -61,13 +61,11 @@ public class ContainerResources extends HttpServlet
                   out.println("<option value=" + m_application_name+">"+m_application_name+"</option>");
               }
               out.println("</select>");
-              out.println("<input type='submit' value='Calculate' /> </form>");
 
               rs.close();
               statement.close();
 
               Statement statement2 = dbcon.createStatement();
-
               String query2 = "select team_name from fda.teams";
               ResultSet rs2 = statement2.executeQuery(query2);
               out.println("<select name='team'>");
