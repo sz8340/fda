@@ -1,5 +1,4 @@
-#!/bin/bash 
-set -x
+#!/bin/bash
 # Copyright (c) 2017, Oracle and/or its affiliates. All rights reserved.
 #
 # This program is free software; you can redistribute it and/or modify
@@ -28,32 +27,27 @@ _get_config() {
 # If command starts with an option, prepend mysqld
 # This allows users to add command-line options without
 # needing to specify the "mysqld" command
-#if [ "${1:0:1}" = '-' ]; then
+if [ "${1:0:1}" = '-' ]; then
 	set -- mysqld "$@"
-#fi
+fi
 MYSQL_ROOT_PASSWORD="root"
-MYSQL_ROOT_HOST="tomcat1"
-MYSQL_DATABASE="fda"
-
+#MYSQL_ROOT_HOST="tomcat1"
 echo "[Entrypoint] MySQL Docker Image 5.7.20-1.1.2"
 
 if [ "$1" = 'mysqld' ]; then
-        echo "mysqld running"
 	# Test that the server can start. We redirect stdout to /dev/null so
 	# only the error messages are left.
-	#result=0
-	#output=$("$@" --verbose --help 2>&1 > /dev/null) || result=$?
-	#if [ ! "$result" = "0" ]; then
-	#	echo >&2 '[Entrypoint] ERROR: Unable to start MySQL. Please check your configuration.'
-	#	echo >&2 "[Entrypoint] $output"
-	#	exit 1
-	#fi
+	result=0
+	output=$("$@" --verbose --help 2>&1 > /dev/null) || result=$?
+	if [ ! "$result" = "0" ]; then
+		echo >&2 '[Entrypoint] ERROR: Unable to start MySQL. Please check your configuration.'
+		echo >&2 "[Entrypoint] $output"
+		exit 1
+	fi
 
-        echo "setting datadir"
 	# Get config
 	DATADIR="$(_get_config 'datadir' "$@")"
 	SOCKET="$(_get_config 'socket' "$@")"
-        echo "$DATADIR"
 
 	if [ -n "$MYSQL_LOG_CONSOLE" ] || [ -n "" ]; then
 		# Don't touch bind-mounted config files
@@ -116,41 +110,21 @@ if [ "$1" = 'mysqld' ]; then
 			MYSQL_ROOT_PASSWORD="$(pwmake 128)"
 			echo "[Entrypoint] GENERATED ROOT PASSWORD: $MYSQL_ROOT_PASSWORD"
 		fi
-
-		echo "ALTER USER root@localhost"
-		ROOTCREATE="ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';"
 		if [ -z "$MYSQL_ROOT_HOST" ]; then
 			ROOTCREATE="ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';"
-		#else
-			#ROOTCREATE="ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}'; \
-			#CREATE USER 'root'@'tomcat1' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}'; \
-			#CREATE USER 'Dude1'@'tomcat1' IDENTIFIED BY 'SuperSecret7@'; \
-			#GRANT ALL ON *.* TO 'root'@'${MYSQL_ROOT_HOST}' WITH GRANT OPTION ; \
-			#GRANT ALL ON *.* TO 'Dude1'@'${MYSQL_ROOT_HOST}' WITH GRANT OPTION ; "
-			#GRANT PROXY ON ''@'' TO 'root'@'${MYSQL_ROOT_HOST}' WITH GRANT OPTION ;" 
+		else
+			ROOTCREATE="ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}'; \
+			GRANT ALL ON *.* TO 'root'@'${MYSQL_ROOT_HOST}' WITH GRANT OPTION ; \
+			#CREATE USER 'Dude1'@'tomcat1' IDENTIFIED BY 'SuperSecret7'; \
+			GRANT PROXY ON ''@'' TO 'root'@'${MYSQL_ROOT_HOST}' WITH GRANT OPTION ;" 
 
-			#CREATE USER 'root'@'tomcat1' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}'; 
-			#CREATE USER 'Dude1'@'tomcat1' IDENTIFIED BY 'SuperSecret7@'; 
-			#GRANT ALL ON *.* TO 'root'@'${MYSQL_ROOT_HOST}' WITH GRANT OPTION ; 
-			#GRANT ALL ON *.* TO 'Dude1'@'${MYSQL_ROOT_HOST}' WITH GRANT OPTION ;
-
-			#ROOTCREATE="ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';"
-			#${ROOTCREATE}
-
-			#FLUSH PRIVILEGES ;
+			${ROOTCREATE}
+			FLUSH PRIVILEGES ;
 		fi
-                echo "create additional mysql accounts"
 		"${mysql[@]}" <<-EOSQL
 			DELETE FROM mysql.user WHERE user NOT IN ('mysql.session', 'mysql.sys', 'root') OR host NOT IN ('localhost');
-
 			CREATE USER 'healthchecker'@'localhost' IDENTIFIED BY 'healthcheckpass';
-			CREATE USER 'root'@'%' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}'; 
-			REATE USER 'Dude1'@'%' IDENTIFIED BY 'SuperSecret7@'; 
-			#CREATE USER 'root'@'tomcat1' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}'; 
-			#CREATE USER 'Dude1'@'tomcat1' IDENTIFIED BY 'SuperSecret7@'; 
-			GRANT ALL ON *.* TO 'root'@'%' WITH GRANT OPTION ;
-			GRANT ALL ON *.* TO 'Dude1'@'%' WITH GRANT OPTION ;
-
+			#CREATE USER 'Dude1'@'tomcat1' IDENTIFIED BY 'SuperSecret7';
 			${ROOTCREATE}
 			FLUSH PRIVILEGES ;
 		EOSQL
@@ -180,7 +154,6 @@ EOF
 			echo '[Entrypoint] Not creating mysql user. MYSQL_USER and MYSQL_PASSWORD must be specified to create a mysql user.'
 		fi
 		echo
-		echo "importing db"
 		for f in /docker-entrypoint-initdb.d/*; do
 			case "$f" in
 				*.sh)  echo "[Entrypoint] running $f"; . "$f" ;;
@@ -206,7 +179,7 @@ EOF
 				install /dev/null -m0600 -omysql -gmysql "$SQL"
 				if [ ! -z "$MYSQL_ROOT_HOST" ]; then
 					cat << EOF > "$SQL"
-#ALTER USER 'root'@'${MYSQL_ROOT_HOST}' PASSWORD EXPIRE;
+ALTER USER 'root'@'${MYSQL_ROOT_HOST}' PASSWORD EXPIRE;
 ALTER USER 'root'@'localhost' PASSWORD EXPIRE;
 EOF
 				else
@@ -239,7 +212,6 @@ EOF
 	echo "[Entrypoint] Starting MySQL 5.7.20-1.1.2"
 
 fi
-echo "not running mysqld"
 
 exec "$@"
 
