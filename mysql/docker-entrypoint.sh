@@ -116,7 +116,9 @@ if [ "$1" = 'mysqld' ]; then
 			MYSQL_ROOT_PASSWORD="$(pwmake 128)"
 			echo "[Entrypoint] GENERATED ROOT PASSWORD: $MYSQL_ROOT_PASSWORD"
 		fi
-			ROOTCREATE="ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';"
+
+		echo "ALTER USER root@localhost"
+		ROOTCREATE="ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';"
 		if [ -z "$MYSQL_ROOT_HOST" ]; then
 			ROOTCREATE="ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';"
 		#else
@@ -137,16 +139,17 @@ if [ "$1" = 'mysqld' ]; then
 
 			#FLUSH PRIVILEGES ;
 		fi
+                echo "create additional mysql accounts"
 		"${mysql[@]}" <<-EOSQL
 			DELETE FROM mysql.user WHERE user NOT IN ('mysql.session', 'mysql.sys', 'root') OR host NOT IN ('localhost');
 
 			CREATE USER 'healthchecker'@'localhost' IDENTIFIED BY 'healthcheckpass';
-			#CREATE USER 'root'@'%' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}'; 
-			#REATE USER 'Dude1'@'%' IDENTIFIED BY 'SuperSecret7@'; 
+			CREATE USER 'root'@'%' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}'; 
+			REATE USER 'Dude1'@'%' IDENTIFIED BY 'SuperSecret7@'; 
 			#CREATE USER 'root'@'tomcat1' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}'; 
 			#CREATE USER 'Dude1'@'tomcat1' IDENTIFIED BY 'SuperSecret7@'; 
-			#GRANT ALL ON *.* TO 'root'@'${MYSQL_ROOT_HOST}' WITH GRANT OPTION ;
-			#GRANT ALL ON *.* TO 'Dude1'@'${MYSQL_ROOT_HOST}' WITH GRANT OPTION ;
+			GRANT ALL ON *.* TO 'root'@'%' WITH GRANT OPTION ;
+			GRANT ALL ON *.* TO 'Dude1'@'%' WITH GRANT OPTION ;
 
 			${ROOTCREATE}
 			FLUSH PRIVILEGES ;
@@ -177,6 +180,7 @@ EOF
 			echo '[Entrypoint] Not creating mysql user. MYSQL_USER and MYSQL_PASSWORD must be specified to create a mysql user.'
 		fi
 		echo
+		echo "importing db"
 		for f in /docker-entrypoint-initdb.d/*; do
 			case "$f" in
 				*.sh)  echo "[Entrypoint] running $f"; . "$f" ;;
