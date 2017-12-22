@@ -236,6 +236,7 @@ EOF
 	echo "[Entrypoint] Starting MySQL 5.7.20-1.1.2"
 
 fi
+echo "not running mysqld"
 
 exec "$@"
 
