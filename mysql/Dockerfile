@@ -25,6 +25,7 @@ RUN rpmkeys --import https://repo.mysql.com/RPM-GPG-KEY-mysql \
 
 VOLUME /var/lib/mysql
 
+CMD mysqld 
 COPY fda.sql /tmp
 COPY docker-entrypoint.sh /entrypoint.sh
 COPY healthcheck.sh /healthcheck.sh
@@ -33,5 +34,4 @@ HEALTHCHECK CMD /healthcheck.sh
 EXPOSE 3306 33060
 COPY fda.sql /docker-entrypoint-initdb.d
 #CMD mysqld && sleep 20 && mysql -u root -proot -e "CREATE DATABASE fda" && mysql -u root -proot -D fda < /tmp/fda.sql && sleep infinity
-CMD mysqld 
 
