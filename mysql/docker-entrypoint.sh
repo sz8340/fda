@@ -39,6 +39,7 @@ echo "[Entrypoint] MySQL Docker Image 5.7.20-1.1.2"
 
 
 if [ "$1" = 'mysqld' ]; then
+        echo "mysqld running"
 	# Test that the server can start. We redirect stdout to /dev/null so
 	# only the error messages are left.
 	#result=0
@@ -53,6 +54,7 @@ if [ "$1" = 'mysqld' ]; then
 	# Get config
 	DATADIR="$(_get_config 'datadir' "$@")"
 	SOCKET="$(_get_config 'socket' "$@")"
+        echo "$DATADIR"
 
 	if [ -n "$MYSQL_LOG_CONSOLE" ] || [ -n "" ]; then
 		# Don't touch bind-mounted config files
