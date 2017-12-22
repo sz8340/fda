@@ -35,6 +35,7 @@ MYSQL_ROOT_PASSWORD="root"
 echo "[Entrypoint] MySQL Docker Image 5.7.20-1.1.2"
 
 if [ "$1" = 'mysqld' ]; then
+        echo "I'm in"
 	# Test that the server can start. We redirect stdout to /dev/null so
 	# only the error messages are left.
 	result=0
