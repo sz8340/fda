@@ -27,13 +27,24 @@
         <url-pattern>/ContainerResources</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>Applications</servlet-name>
+        <servlet-class>Applications</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Applications</servlet-name>
+        <url-pattern>/Applciations</url-pattern>
+    </servlet-mapping>
+
+
+
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
         <welcome-file>index.xhtml</welcome-file>
         <welcome-file>index.htm</welcome-file>
         <welcome-file>index.jsp</welcome-file>
         <welcome-file>fream_a.html</welcome-file>
-        <welcome-file>fream_b.html</welcome-file>
+        <welcome-file>Applications.html</welcome-file>
         <welcome-file>fream_c.html</welcome-file>
     </welcome-file-list>
 
