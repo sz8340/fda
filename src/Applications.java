@@ -52,11 +52,11 @@ public class Applications extends HttpServlet
 
       // create the mysql insert preparedstatement
       PreparedStatement preparedStmt = conn.prepareStatement(query);
-      preparedStmt.setString (1, "Barney");
-      preparedStmt.setString (2, "Rubble");
-      preparedStmt.setDate   (3, startDate);
-      preparedStmt.setBoolean(4, false);
-      preparedStmt.setInt    (5, 5000);
+      //preparedStmt.setString (1, "Barney");
+      //preparedStmt.setString (2, "Rubble");
+      //preparedStmt.setDate   (3, startDate);
+      //preparedStmt.setBoolean(4, false);
+      //preparedStmt.setInt    (5, 5000);
 
       // execute the preparedstatement
       preparedStmt.execute();
