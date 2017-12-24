@@ -48,8 +48,7 @@ public class Applications extends HttpServlet
               // Declare our statement
               Statement statement = dbcon.createStatement();
 
-	      //String query = "insert into fda.applications (application_name, id) values (" + app + "," + id + ")";
-	      String query = "insert into fda.applications (application_name, id) values ('app-6', 6)";
+	      String query = "insert into fda.applications (application_name, id) values ('" + app + "', " + id + ")";
 
       // create the mysql insert preparedstatement
       PreparedStatement preparedStmt = dbcon.prepareStatement(query);
