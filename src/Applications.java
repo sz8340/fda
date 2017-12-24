@@ -51,7 +51,7 @@ public class Applications extends HttpServlet
 	      String query = "insert into fda.applications (application_name, id) values (" + app + "," + id + ")";
 
       // create the mysql insert preparedstatement
-      PreparedStatement preparedStmt = conn.prepareStatement(query);
+      PreparedStatement preparedStmt = dbcon.prepareStatement(query);
       //preparedStmt.setString (1, "Barney");
       //preparedStmt.setString (2, "Rubble");
       //preparedStmt.setDate   (3, startDate);
