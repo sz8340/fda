@@ -29,7 +29,7 @@
   %>
     <h3>You have selected null</h3>
   <%
-  } else {
+  }
   %>
 </body>
 </html>
