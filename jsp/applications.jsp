@@ -12,7 +12,8 @@
   <%
   String get_application = request.getParameter("application");
   String get_id = request.getParameter("id");
-  if (get_application == null || get_id == null) {
+  //if (get_application == null || get_id == null) {
+  if (get_application == "a" || get_id == "b") {
   %>
     <h3>Both fields must have some value! </h3>
     <ul>
