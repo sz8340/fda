@@ -1,4 +1,4 @@
-// File: ContainerResources.java
+// File: Inventory.java
 
 /* A servlet to display the contents of the MySQL FDA database */
 
@@ -10,7 +10,7 @@ import java.util.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-public class ContainerResources extends HttpServlet 
+public class Inventory extends HttpServlet 
 {
     public String getServletInfo()
     {

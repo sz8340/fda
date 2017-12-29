@@ -3,9 +3,9 @@
 <frameset rows="10%,90%">
   <frame src="title.html" name="TopFrame">
   <frameset cols="15%,85%">
-     <FRAME SRC="menu.html" NAME="LeftFrame" > 
-     <!--FRAME SRC="about:blank" NAME="RightFrame"--> 
-     <FRAME SRC="docker.html" NAME="RightFrame"--> 
+     <frame src="menu.html" name="LeftFrame" > 
+     <!--frame src="about:blank" name="RightFrame"--> 
+     <frame src="docker.html" name="RightFrame"--> 
   </frameset>
 </frameset>
 

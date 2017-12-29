@@ -1,16 +1,26 @@
-<HTML> 
-<SCRIPT LANGUAGE="JavaScript">
-function goToURL() {
+<html> 
+<script language="JavaScript">
+function Applications() {
  location.href = "Applications.html";
 }
+function Applications() {
+ location.href = "Inventory";
+}
+function Echo() {
+ location.href = "echo.jsp";
+}
 </script>
-<BODY>        
-<FORM NAME="Myform" METHOD=GET>
+<body>        
+<form name="Myform" method=get>
 <a href="echo.jsp" target="RightFrame"><input type="button" value="Click Me"/></a>
 
-<INPUT TYPE=SUBMIT VALUE="Applications-2" target="RightFrame" target='RightFrame' onClick="goToURL()">
-<a href="ContainerResources" value="Test" target="RightFrame" class="button">Test</a>
-<a href="Applications.htnl" value="Applications" target="RightFrame" class="button">Test</a>
+<input type=submit value="Applications" target="RightFrame" target='RightFrame' onClick="goToURL()">
+<input type=submit value="Teams" target="RightFrame" target='RightFrame' onClick="Teams()">
+<input type=submit value="Users" target="RightFrame" target='RightFrame' onClick="Users()">
+<input type=submit value="Containers" target="RightFrame" target='RightFrame' onClick="Containers()">
+<input type=submit value="Inventory" target="RightFrame" target='RightFrame' onClick="Inventory()">
+<input type=submit value="Echo" target="RightFrame" target='RightFrame' onClick="echo()">
+
 </FORM> 
 </BODY> 
 </HEAD> 
