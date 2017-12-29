@@ -3,7 +3,7 @@
     <title>Applications</title>
 </head>
 <body>
-    <form action="Applications" method="get">
+    <form method="get">
         Application: <input type="text" size="20" name="application"/> <br>
         ID <input type="text" size="20" name="id"/> <br>
         <input type="submit" value="Add" />
