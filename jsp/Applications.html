@@ -8,5 +8,17 @@
         ID <input type="text" size="20" name="id"/> <br>
         <input type="submit" value="Add" />
     </form>
+
+  <%
+  String[] application = request.getParameterValues("application");
+  String[] id = request.getParameterValues("id");
+  if (application == null || id == null) {
+  %>
+    <h3>Both fields must have some value! </h3>
+    <ul>
+  <%
+  }
+  %>
+
 </body>
 </html>
