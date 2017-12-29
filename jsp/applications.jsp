@@ -20,7 +20,7 @@
   <%
   } else {
   %>
-    <jsp:forward page='applications'>
+    <jsp:forward page='Applications'>
     <jsp:param name='application' value="get_application" />
     <jsp:param name='id' value="11"  />
     </jsp:forward> 
