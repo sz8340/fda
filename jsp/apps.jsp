@@ -17,17 +17,11 @@
         <li><%= get_application %></li>
         <li><%= get_id %></li>
   <%
-  //if (get_application == null || get_id == null) {
-  if (get_application == "a" || get_id == "b") {
-  %>
-    <h3>Both fields must have some value! </h3>
-    <ul>
-  <%
-  } else {
+  if (get_application != null || get_id != null) {
   %>
     <jsp:forward page='Applications'>
     <jsp:param name='application' value="get_application" />
-    <jsp:param name='id' value="11"  />
+    <jsp:param name='id' value="12"  />
     </jsp:forward> 
   <%
   }
