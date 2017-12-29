@@ -12,7 +12,9 @@
   <%
   String get_application = request.getParameter("application");
   String get_id = request.getParameter("id");
+  %>
     App:<%= get_application %>:ppA
+  <%
   if ( get_application == null ) {
   %>
     <h3>You have selected null</h3>
