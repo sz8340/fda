@@ -12,12 +12,7 @@
   <%
   String get_application = request.getParameter("application");
   String get_id = request.getParameter("id");
-  %>
-    <h3>You have selected author(s):</h3>
-        <li><%= get_application %></li>
-        <li><%= get_id %></li>
-  <%
-  if (get_application != null || get_id != null) {
+  if ( get_application != null ) {
   %>
     <h3>Forwarding...</h3>
     <jsp:forward page='Applications'>
