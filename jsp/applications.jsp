@@ -17,6 +17,11 @@
     <h3>Both fields must have some value! </h3>
     <ul>
   <%
+  } else {
+    <jsp:forward page='applications'>
+    <jsp:param name='application' value=get_application />
+    <jsp:param name='id' value=get_id />
+    </jsp:forward> 
   }
   %>
 
