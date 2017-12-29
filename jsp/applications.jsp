@@ -18,10 +18,12 @@
     <ul>
   <%
   } else {
+  %>
     <jsp:forward page='applications'>
-    <jsp:param name='application' value=get_application />
-    <jsp:param name='id' value=get_id />
+    <jsp:param name='application' value="get_application" />
+    <jsp:param name='id' value=11 />
     </jsp:forward> 
+  <%
   }
   %>
 
