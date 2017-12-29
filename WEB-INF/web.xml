@@ -19,12 +19,12 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>ContainerResources</servlet-name>
-        <servlet-class>ContainerResources</servlet-class>
+        <servlet-name>Inventory</servlet-name>
+        <servlet-class>Inventory</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>ContainerResources</servlet-name>
-        <url-pattern>/ContainerResources</url-pattern>
+        <servlet-name>Inventory</servlet-name>
+        <url-pattern>/Inventory</url-pattern>
     </servlet-mapping>
 
     <servlet>
