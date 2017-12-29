@@ -4,9 +4,9 @@
 </head>
 <body>
     <form method="get">
-        Application: <input type="text" size="20" name="application"/> <br>
-        ID <input type="text" size="20" name="id"/> <br>
-        <input type="submit" value="Add" />
+        Application: <input type="text" size="20" name="application"> <br>
+        ID <input type="text" size="20" name="id"> <br>
+        <input type="submit" value="Add">
     </form>
 
   <%
