@@ -1,8 +1,12 @@
 <HTML> 
+<SCRIPT LANGUAGE="JavaScript">
+function goToURL() {
+ location.href = "Applications.html";
+}
+</script>
 <BODY>        
 <FORM NAME="Myform" METHOD=GET>
-<INPUT TYPE=SUBMIT VALUE="Applications-1" target="TopFrame" action="Applications.html">>
-<INPUT TYPE=SUBMIT VALUE="Applications-2" target="RightFrame" action="Applications.html">>
+<INPUT TYPE=SUBMIT VALUE="Applications-2" target="RightFrame" target='RightFrame' onClick="goToURL()">
 <a href="ContainerResources" value="Test" target="RightFrame" class="button">Test</a>
 <a href="Applications.htnl" value="Applications" target="RightFrame" class="button">Test</a>
 </FORM> 
