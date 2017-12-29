@@ -27,6 +27,11 @@
     </ul>
     <a href="<%= request.getRequestURI() %>">BACK</a>
   <%
+  } else {
+  %>
+    <h3>You have selected null:</h3>
+    
+  <%
   }
   %>
 </body>
