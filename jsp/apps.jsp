@@ -19,13 +19,17 @@
   <%
   if (get_application != null || get_id != null) {
   %>
+    <h3>Forwarding...</h3>
     <jsp:forward page='Applications'>
     <jsp:param name='application' value="get_application" />
     <jsp:param name='id' value="12"  />
     </jsp:forward> 
   <%
-  }
+  } else {
   %>
-
+    <h3>You have selected null</h3>
+  <%
+  } else {
+  %>
 </body>
 </html>
