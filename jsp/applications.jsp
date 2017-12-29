@@ -10,9 +10,9 @@
     </form>
 
   <%
-  String application = request.getParameter("application");
-  String id = request.getParameter("id");
-  if (application == null || id == null) {
+  String get_application = request.getParameter("application");
+  String get_id = request.getParameter("id");
+  if (get_application == null || get_id == null) {
   %>
     <h3>Both fields must have some value! </h3>
     <ul>
