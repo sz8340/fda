@@ -20,6 +20,17 @@
     <h3>You have selected null</h3>
     <%= get_application %>
   <%
+  } else if ( get_application == "" ) {
+  %>
+    <h3>You have selected NOTHING</h3>
+    <%= get_application %>
+  <%
+  } else {
+  %>
+    <h3>You have selected something</h3>
+    <%= get_application %>
+  <%
+  }
   }
   %>
 </body>
