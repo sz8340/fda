@@ -27,11 +27,16 @@
   <%
   } else {
   %>
-    <h3>You have selected something</h3>
-    <%= get_application %>
+    <h3>Forwarding...</h3>
+    <jsp:forward page='Applications'>
+    <jsp:param name='application' value="get_application" />
+    <jsp:param name='id' value="12"  />
+    </jsp:forward> 
   <%
-  }
   }
   %>
 </body>
 </html>
+
+
+
