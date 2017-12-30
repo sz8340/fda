@@ -1,4 +1,4 @@
-// File: ContainerCosts.java
+// File: Inventory2 .java
 /* A servlet to display the contents of the MySQL FDA database */
 
 
@@ -10,7 +10,7 @@ import java.util.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-public class ContainerCosts extends HttpServlet 
+public class Inventory2  extends HttpServlet 
 {
     public String getServletInfo()
     {

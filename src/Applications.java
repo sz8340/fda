@@ -18,10 +18,8 @@ public class Applications extends HttpServlet
     }
 
     // Use http GET
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response)
-        throws IOException, ServletException
-    {
         String loginUser = "Dude1";
         String loginPasswd = "SuperSecret7@";
         String loginUrl = "jdbc:mysql://mysql1:3306/fda";
@@ -37,7 +35,6 @@ public class Applications extends HttpServlet
 	String app=request.getParameter("application");
 	String id=request.getParameter("id");
 
-		
         // Load the mm.MySQL driver
         try
            {
@@ -50,23 +47,14 @@ public class Applications extends HttpServlet
 
 	      String query = "insert into fda.applications (application_name, id) values ('" + app + "', " + id + ")";
 
-      // create the mysql insert preparedstatement
-      PreparedStatement preparedStmt = dbcon.prepareStatement(query);
-      //preparedStmt.setString (1, "Barney");
-      //preparedStmt.setString (2, "Rubble");
-      //preparedStmt.setDate   (3, startDate);
-      //preparedStmt.setBoolean(4, false);
-      //preparedStmt.setInt    (5, 5000);
-
-      // execute the preparedstatement
-      preparedStmt.execute();
+              PreparedStatement preparedStmt = dbcon.prepareStatement(query);
+              preparedStmt.execute();
 
               out.println("Recorded added!");
               statement.close();
               dbcon.close();
 
-            }
-        catch (SQLException ex) {
+            } catch (SQLException ex) {
               out.println(ex);
               while (ex != null) {
                     System.out.println ("SQL Exception:  " + ex.getMessage ());
@@ -74,16 +62,10 @@ public class Applications extends HttpServlet
                 }  // end while
             }  // end catch SQLException
 
-        catch(java.lang.Exception ex)
-            {
-                out.println("<HTML>" +
-                            "<HEAD><TITLE>" +
-                            "Bedrock: Error" +
-                            "</TITLE></HEAD>\n<BODY>" +
-                            "<P>SQL error in doGet: " +
-                            ex.getMessage() + "</P></BODY></HTML>");
+        catch(java.lang.Exception ex) {
+                out.println("<HTML>" + "<HEAD><TITLE>" + "Error" + "</TITLE></HEAD>\n<BODY>" + "<P>SQL error in doGet: " + ex.getMessage() + "</P></BODY></HTML>");
                 return;
-            }
-         out.close();
+        }
+        out.close();
     }
 }
