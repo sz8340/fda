@@ -12,22 +12,22 @@
   <%
   String get_application = request.getParameter("application");
   String get_id = request.getParameter("id");
-  %>
-    App:<%= get_application %>:ppA
-  <%
   if ( get_application == null ) {
   %>
-    <h3>You have selected null</h3>
     <%= get_application %>
   <%
   } else if ( get_application == "" ) {
   %>
-    <h3>You have selected NOTHING</h3>
+    <h3>Field Application can not be blank!</h3>
+    <%= get_application %>
+  <%
+  } else if ( get_id == "" ) {
+  %>
+    <h3>Field ID can not be blank!</h3>
     <%= get_application %>
   <%
   } else {
   %>
-    <h3>Forwarding...</h3>
     <jsp:forward page='Applications'>
     <jsp:param name='application' value="get_application" />
     <jsp:param name='id' value="12"  />
