@@ -46,11 +46,6 @@ public class ContainerCosts  extends HttpServlet
         if ( !team.equals("") ) {
           filter += " and teams.team_name='" + team + "'";
         }
-       /* 
-        if ( !user.equals("") ) {
-          filter += " and user='" + user + "'";
-        }
-*/
         
 		
         // Load the mm.MySQL driver
@@ -62,15 +57,8 @@ public class ContainerCosts  extends HttpServlet
               Connection dbcon = DriverManager.getConnection(loginUrl, loginUser, loginPasswd);
               // Declare our statement
               Statement statement = dbcon.createStatement();
-/*
-              String query = "SELECT application, team, ";
-              query +=       "       user, container_size, container_price ";
-              query +=       "FROM   fda.costs ";
-              query +=       filter;
-*/
 
-String query = "select inventory.container_id, teams.team_name, containers.container_size, containers.container_price, applications.application_name from fda.inventory, fda.teams , fda.containers, fda.applications  where inventory.team_id=teams.id and inventory.container_size=containers.id and inventory.application_id=applications.id " + filter + ";";
-              //out.println(query);
+              String query = "select inventory.container_id, teams.team_name, containers.container_size, containers.container_price, applications.application_name from fda.inventory, fda.teams , fda.containers, fda.applications  where inventory.team_id=teams.id and inventory.container_size=containers.id and inventory.application_id=applications.id " + filter + ";";
 
               // Perform the query
               ResultSet rs = statement.executeQuery(query);
@@ -138,7 +126,7 @@ String query = "select inventory.container_id, teams.team_name, containers.conta
             {
                 out.println("<HTML>" +
                             "<HEAD><TITLE>" +
-                            "Bedrock: Error" +
+                            "Error" +
                             "</TITLE></HEAD>\n<BODY>" +
                             "<P>SQL error in doGet: " +
                             ex.getMessage() + "</P></BODY></HTML>");
