@@ -32,6 +32,7 @@ public class Applications extends HttpServlet
         out.println("<HTML><HEAD><TITLE>Inventory</TITLE></HEAD>");
         out.println("<BODY align='center'><H1>Inventory</H1>");
 
+        out.println("Linux computer name throguh env:\"" + System.getenv("HOSTNAME") + "\"");
     Server p = new Server();
     System.out.println("hostname: " + p.getName());
 
