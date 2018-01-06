@@ -32,6 +32,9 @@ public class Applications extends HttpServlet
         out.println("<HTML><HEAD><TITLE>Inventory</TITLE></HEAD>");
         out.println("<BODY align='center'><H1>Inventory</H1>");
 
+    Proba p = new Proba();
+    System.out.println(p.getTime());
+
 	String app=request.getParameter("application");
 	String id=request.getParameter("id");
 
