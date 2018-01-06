@@ -1,9 +1,9 @@
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
-public class Proba {
+public class Server {
   
-  public String getTime() {
+  public String getName() {
     String hostname = "";
     try {
       InetAddress ip = InetAddress.getLocalHost();
