@@ -34,41 +34,6 @@ public class Title extends HttpServlet
 
         Server p = new Server();
         out.println("hostname: " + p.getName());
-/*
-	String app=request.getParameter("application");
-	String id=request.getParameter("id");
-
-        // Load the mm.MySQL driver
-        try
-           {
-              Class.forName("org.gjt.mm.mysql.Driver");
-              //Class.forName("com.mysql.jdbc.Driver");
-              //Class.forName("oracle.jdbc.driver.OracleDriver");
-              Connection dbcon = DriverManager.getConnection(loginUrl, loginUser, loginPasswd);
-              // Declare our statement
-              Statement statement = dbcon.createStatement();
-
-	      String query = "select * from fda.applications";
-
-              PreparedStatement preparedStmt = dbcon.prepareStatement(query);
-              preparedStmt.execute();
-
-              statement.close();
-              dbcon.close();
-
-            } catch (SQLException ex) {
-              out.println(ex);
-              while (ex != null) {
-                    System.out.println ("SQL Exception:  " + ex.getMessage ());
-                    ex = ex.getNextException ();
-                }  // end while
-            }  // end catch SQLException
-
-        catch(java.lang.Exception ex) {
-                out.println("<HTML>" + "<HEAD><TITLE>" + "Error" + "</TITLE></HEAD>\n<BODY>" + "<P>SQL error in doGet: " + ex.getMessage() + "</P></BODY></HTML>");
-                return;
-        }
-*/
         out.close();
     }
 }
