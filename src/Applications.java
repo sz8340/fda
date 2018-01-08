@@ -36,8 +36,6 @@ public class Applications extends HttpServlet
 
 	String app=request.getParameter("application");
 	String id=request.getParameter("id");
-        out.println("Application: " + app);
-        out.println("ID: " + id);
 
         // Load the mm.MySQL driver
         try
@@ -54,8 +52,8 @@ public class Applications extends HttpServlet
               PreparedStatement preparedStmt = dbcon.prepareStatement(query);
               preparedStmt.execute();
 
-              out.println("Application: " + app);
-              out.println("ID: " + id);
+              out.println("Application: " + app + "<br>);
+              out.println("ID: " + id + "<br>);
               out.println("Recorded added from hostname: " + p.getName());
               statement.close();
               dbcon.close();
