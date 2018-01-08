@@ -35,7 +35,7 @@ public class InventoryAdd extends HttpServlet
         out.println("<BODY><H1>Inventory List</H1>");
 
 
-        out.println("<form action='InventoryList' method='get'>");
+        out.println("<form action='InventoryAddList' method='get'>");
 
         // Load the mm.MySQL driver
         try
@@ -79,8 +79,6 @@ public class InventoryAdd extends HttpServlet
                   out.println("<option value=" + m_team_name+">"+m_team_name+"</option>");
               }
               out.println("</select>");
-              out.println("<input type='submit' value='Submit' />");
-              out.println("</form>");
 
               rs2.close();
               statement2.close();

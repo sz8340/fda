@@ -37,6 +37,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>InventoryAddList</servlet-name>
+        <servlet-class>InventoryAddList</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InventoryAddList</servlet-name>
+        <url-pattern>/InventoryAddList</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>Applications</servlet-name>
         <servlet-class>Applications</servlet-class>
     </servlet>
