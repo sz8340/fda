@@ -10,21 +10,21 @@
     <display-name>Servlet and JSP Examples</display-name>
 
     <servlet>
-        <servlet-name>ContainerCosts</servlet-name>
-        <servlet-class>ContainerCosts</servlet-class>
+        <servlet-name>InventoryFilter</servlet-name>
+        <servlet-class>InventoryFilter</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>ContainerCosts</servlet-name>
-        <url-pattern>/ContainerCosts</url-pattern>
+        <servlet-name>InventoryFilter</servlet-name>
+        <url-pattern>/InventoryFilter</url-pattern>
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>Inventory</servlet-name>
-        <servlet-class>Inventory</servlet-class>
+        <servlet-name>InventoryList</servlet-name>
+        <servlet-class>InventoryList</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>Inventory</servlet-name>
-        <url-pattern>/Inventory</url-pattern>
+        <servlet-name>InventoryList</servlet-name>
+        <url-pattern>/InventoryList</url-pattern>
     </servlet-mapping>
 
     <servlet>
