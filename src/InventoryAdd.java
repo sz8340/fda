@@ -56,12 +56,13 @@ public class InventoryAdd extends HttpServlet
               ResultSet rs = statement.executeQuery(query);
 
               // Iterate through each row of rs
-              out.println("<select name='application'>");
+              out.println("<select name='application_id'>");
               out.println("<option value=''></option>");
               while (rs.next())
               {
                   String m_application_name = rs.getString("application_name");
-                  out.println("<option value=" + m_application_name+">"+m_application_name+"</option>");
+                  String m_application_id = rs.getString("application_id");
+                  out.println("<option value=" + m_application_id+">"+m_application_name+"</option>");
               }
               out.println("</select>");
 
@@ -71,12 +72,13 @@ public class InventoryAdd extends HttpServlet
               Statement statement2 = dbcon.createStatement();
               String query2 = "select team_name from fda.teams";
               ResultSet rs2 = statement2.executeQuery(query2);
-              out.println("<select name='team'>");
+              out.println("<select name='team_id'>");
               out.println("<option value=''></option>");
               while (rs2.next())
               {
                   String m_team_name = rs2.getString("team_name");
-                  out.println("<option value=" + m_team_name+">"+m_team_name+"</option>");
+                  String m_team_id = rs2.getString("team_id");
+                  out.println("<option value=" + m_team_id+">"+m_team_name+"</option>");
               }
               out.println("</select>");
 
@@ -86,12 +88,13 @@ public class InventoryAdd extends HttpServlet
               Statement statement3 = dbcon.createStatement();
               String query3 = "select container_size from fda.containers";
               ResultSet rs3 = statement3.executeQuery(query3);
-              out.println("<select name='containers'>");
+              out.println("<select name='container_id'>");
               out.println("<option value=''></option>");
               while (rs3.next())
               {
                   String m_container_size = rs3.getString("container_size");
-                  out.println("<option value=" + m_container_size+">"+m_container_size+"</option>");
+                  String m_container_id = rs3.getString("container_id");
+                  out.println("<option value=" + m_container_id+">"+m_container_size+"</option>");
               }
               out.println("</select>");
               out.println("<input type='submit' value='Submit' />");
