@@ -55,7 +55,7 @@ public class InventoryAddList extends HttpServlet
               preparedStmt.execute();
 
               out.println("Application: " + m_application_id + "<br>");
-              out.println("Team: " + team_id + "<br>");
+              out.println("Team: " + m_team_id + "<br>");
               out.println("Recorded added from hostname: " + p.getName());
               statement.close();
               dbcon.close();
