@@ -32,8 +32,6 @@ public class Applications extends HttpServlet
         out.println("<HTML><HEAD><TITLE>Inventory</TITLE></HEAD>");
         out.println("<BODY align='center'><H1>Inventory</H1>");
 
-        out.println("Linux computer name throguh env:\"" + System.getenv("HOSTNAME") + "\"");
-
         Server p = new Server();
 
 	String app=request.getParameter("application");
@@ -54,6 +52,8 @@ public class Applications extends HttpServlet
               PreparedStatement preparedStmt = dbcon.prepareStatement(query);
               preparedStmt.execute();
 
+              out.println("Application: " + app);
+              out.println("ID: " + id);
               out.println("Recorded added from hostname: " + p.getName());
               statement.close();
               dbcon.close();
