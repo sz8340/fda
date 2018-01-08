@@ -1,4 +1,4 @@
-// File: Inventory.java
+// File: InventoryFilter.java
 
 /* A servlet to display the contents of the MySQL FDA database */
 
@@ -10,7 +10,7 @@ import java.util.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-public class Inventory extends HttpServlet 
+public class InventoryFilter extends HttpServlet 
 {
     public String getServletInfo()
     {
@@ -31,11 +31,11 @@ public class Inventory extends HttpServlet
         // Output stream to STDOUT
         PrintWriter out = response.getWriter();
 
-        out.println("<HTML><HEAD><TITLE>Cost Calculation</TITLE></HEAD>");
-        out.println("<BODY><H1>Inventory</H1>");
+        out.println("<HTML><HEAD><TITLE>Inventory List</TITLE></HEAD>");
+        out.println("<BODY><H1>Inventory List</H1>");
 
 
-        out.println("<form action='ContainerCosts' method='get'>");
+        out.println("<form action='InventoryList' method='get'>");
 
         // Load the mm.MySQL driver
         try

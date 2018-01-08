@@ -1,4 +1,4 @@
-// File: ContainerCosts .java
+// File: InventoryList .java
 /* A servlet to display the contents of the MySQL FDA database */
 
 
@@ -10,7 +10,7 @@ import java.util.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-public class ContainerCosts  extends HttpServlet 
+public class InventoryList extends HttpServlet 
 {
     public String getServletInfo()
     {
@@ -31,8 +31,8 @@ public class ContainerCosts  extends HttpServlet
         // Output stream to STDOUT
         PrintWriter out = response.getWriter();
 
-        out.println("<HTML><HEAD><TITLE>Inventory</TITLE></HEAD>");
-        out.println("<BODY align='center'><H1>Inventory</H1>");
+        out.println("<HTML><HEAD><TITLE>Inventory List</TITLE></HEAD>");
+        out.println("<BODY align='center'><H1>Inventory List</H1>");
 
 	String app=request.getParameter("application");
 	String team=request.getParameter("team");
