@@ -36,6 +36,8 @@ public class Applications extends HttpServlet
 
 	String app=request.getParameter("application");
 	String id=request.getParameter("id");
+        out.println("Application: " + app);
+        out.println("ID: " + id);
 
         // Load the mm.MySQL driver
         try
