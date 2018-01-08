@@ -36,6 +36,15 @@
         <url-pattern>/Applications</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>Title</servlet-name>
+        <servlet-class>Title</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Title</servlet-name>
+        <url-pattern>/Title</url-pattern>
+    </servlet-mapping>
+
 
 
     <welcome-file-list>
