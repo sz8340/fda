@@ -54,7 +54,7 @@ public class InventoryAddList extends HttpServlet
               PreparedStatement preparedStmt = dbcon.prepareStatement(query);
               preparedStmt.execute();
 
-              out.println("Application: " + m_appication_id + "<br>");
+              out.println("Application: " + m_application_id + "<br>");
               out.println("Team: " + team_id + "<br>");
               out.println("Recorded added from hostname: " + p.getName());
               statement.close();
