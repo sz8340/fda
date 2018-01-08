@@ -34,7 +34,7 @@ public class Title extends HttpServlet
 
         Server p = new Server();
         out.println("hostname: " + p.getName());
-
+/*
 	String app=request.getParameter("application");
 	String id=request.getParameter("id");
 
@@ -53,7 +53,6 @@ public class Title extends HttpServlet
               PreparedStatement preparedStmt = dbcon.prepareStatement(query);
               preparedStmt.execute();
 
-              out.println("Recorded added!");
               statement.close();
               dbcon.close();
 
@@ -69,6 +68,7 @@ public class Title extends HttpServlet
                 out.println("<HTML>" + "<HEAD><TITLE>" + "Error" + "</TITLE></HEAD>\n<BODY>" + "<P>SQL error in doGet: " + ex.getMessage() + "</P></BODY></HTML>");
                 return;
         }
+*/
         out.close();
     }
 }
