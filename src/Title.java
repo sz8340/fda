@@ -29,7 +29,7 @@ public class Title extends HttpServlet
         out.println("<BODY align='center'><H1>FDA Docker Management Tool</H1>");
 
         Server p = new Server();
-        System.out.println("hostname: " + p.getName());
+        out.println("hostname: " + p.getName());
 
     }
 }
