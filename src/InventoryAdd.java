@@ -93,7 +93,7 @@ public class InventoryAdd extends HttpServlet
               while (rs3.next())
               {
                   String m_container_size = rs3.getString("container_size");
-                  out.println("<option value=" + m_team_name+">"+m_container_size+"</option>");
+                  out.println("<option value=" + m_container_size+">"+m_container_size+"</option>");
               }
               out.println("</select>");
               out.println("<input type='submit' value='Submit' />");
