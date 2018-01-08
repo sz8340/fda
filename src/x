@@ -1,0 +1,4 @@
+        out.println("<BODY align='center' bgcolor='lightblue'><H1>FDA Docker Management Tool</H1>");
+
+        Server p = new Server();
+        out.println("hostname: " + p.getName());
