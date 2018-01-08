@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Applications</title>
+    <title>Applications</title>    
 </head>
 <body style='background-color:powderblue;' align='center'>
 <h1>FDA Docker Management Tool</h1>
