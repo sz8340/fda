@@ -51,7 +51,7 @@ public class InventoryAdd extends HttpServlet
               // Declare our statement
               Statement statement = dbcon.createStatement();
 
-              String query = "select application_name, application_id from fda.applications";
+              String query = "select application_name, id from fda.applications";
               //out.println(query);
 
               out.println("<input type='text' name='container_id'>");
@@ -61,7 +61,7 @@ public class InventoryAdd extends HttpServlet
 
               // Iterate through each row of rs
               while (rs.next()) {
-                  m_application_id.add(rs.getString("application_id"));
+                  m_application_id.add(rs.getString("id"));
                   m_application_name.add(rs.getString("application_name"));
               }
 
