@@ -60,15 +60,17 @@ public class InventoryAdd extends HttpServlet
               ResultSet rs = statement.executeQuery(query);
 
               // Iterate through each row of rs
-              while (rs.next())
-              {
+              while (rs.next()) {
                   m_application_name.add(rs.getString("application_name"));
+              }
+              while (rs.next()) {
+                  m_application_id.add(rs.getString("application_id"));
               }
 
               out.println("<select name='application'>");
               out.println("<option value=''></option>");
               for (i = 0; i< m_application_name.size(); i ++ ) {
-                  out.println("<option value=" + m_application_name.get(i)+">"+m_application_name.get(i)+"</option>");
+                  out.println("<option value=" + m_application_name.id(i)+">"+m_application_name.get(i)+"</option>");
               }
               out.println("</select>");
 
