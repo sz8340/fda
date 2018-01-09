@@ -56,14 +56,14 @@ public class InventoryAdd extends HttpServlet
               ResultSet rs = statement.executeQuery(query);
 
               // Iterate through each row of rs
-              out.println("<select name='application_id'>");
+              out.println("<select name='application'>");
               out.println("<option value=''></option>");
               while (rs.next())
               {
                   String m_application_name = rs.getString("application_name");
-                  String m_application_id = rs.getString("application_id");
-out.println(m_application_name);
-out.println(m_application_id);
+//                  String m_application_id = rs.getString("application_id");
+//out.println(m_application_name);
+//out.println(m_application_id);
                   out.println("<option value=" + m_application_id+">"+m_application_name+"</option>");
               }
               out.println("</select>");
@@ -74,7 +74,7 @@ out.println(m_application_id);
               Statement statement2 = dbcon.createStatement();
               String query2 = "select team_name from fda.teams";
               ResultSet rs2 = statement2.executeQuery(query2);
-              out.println("<select name='team_id'>");
+              out.println("<select name='team'>");
               out.println("<option value=''></option>");
               while (rs2.next())
               {
