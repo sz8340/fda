@@ -26,6 +26,9 @@ public class InventoryAdd extends HttpServlet
         String loginPasswd = "SuperSecret7@";
         String loginUrl = "jdbc:mysql://mysql1:3306/fda";
 
+        List<String> m_application_id = new ArrayList<String>();
+        List<String> m_application_name = new ArrayList<String>();
+
         response.setContentType("text/html");    // Response mime type
 
         // Output stream to STDOUT
@@ -33,6 +36,7 @@ public class InventoryAdd extends HttpServlet
 
         out.println("<HTML><HEAD><TITLE>Inventory List</TITLE></HEAD>");
         out.println("<BODY><H1>Inventory List</H1>");
+        int i = 0;
 
 
         out.println("<form action='InventoryAddList' method='get'>");
@@ -56,16 +60,15 @@ public class InventoryAdd extends HttpServlet
               ResultSet rs = statement.executeQuery(query);
 
               // Iterate through each row of rs
-              out.println("<select name='application'>");
-              out.println("<option value=''></option>");
               while (rs.next())
               {
-                  String m_application_name = rs.getString("application_name");
-                  String m_application_id = rs.getString("application_id");
-out.println(m_application_name);
-out.println(m_application_id);
-                  out.println("<option value=" + m_application_id+">"+m_application_name+"</option>");
-                  out.println("<option value=" + m_application_name+">"+m_application_name+"</option>");
+                  m_application_name.add(rs.getString("application_name"));
+              }
+
+              out.println("<select name='application'>");
+              out.println("<option value=''></option>");
+              for (i = 0; i< m_application_name.size(); i ++ ) {
+                  out.println("<option value=" + m_application_name.get(i)+">"+m_application_name.get(i)+"</option>");
               }
               out.println("</select>");
 
