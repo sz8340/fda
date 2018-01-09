@@ -24,7 +24,7 @@ public class InventoryAdd extends HttpServlet
     {
         String loginUser = "Dude1";
         String loginPasswd = "SuperSecret7@";
-        String loginUrl = "jdbc:mysql://mysql1:3306/fda";
+        String loginUrl = "jdbc:mysql://mysql1:3306/fda?allowMultiQueries=true";
 
         List<String> m_application_id = new ArrayList<String>();
         List<String> m_application_name = new ArrayList<String>();
@@ -62,8 +62,6 @@ public class InventoryAdd extends HttpServlet
               // Iterate through each row of rs
               while (rs.next()) {
                   m_application_name.add(rs.getString("application_name"));
-              }
-              while (rs.next()) {
                   m_application_id.add(rs.getString("application_id"));
               }
 
