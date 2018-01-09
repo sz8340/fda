@@ -70,7 +70,7 @@ public class InventoryAdd extends HttpServlet
               out.println("<select name='application'>");
               out.println("<option value=''></option>");
               for (i = 0; i< m_application_name.size(); i ++ ) {
-                  out.println("<option value=" + m_application_name.id(i)+">"+m_application_name.get(i)+"</option>");
+                  out.println("<option value=" + m_application_name_id.get(i)+">"+m_application_name.get(i)+"</option>");
               }
               out.println("</select>");
 
