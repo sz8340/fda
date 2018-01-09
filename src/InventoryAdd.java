@@ -54,13 +54,13 @@ public class InventoryAdd extends HttpServlet
               String query = "select application_name, id from fda.applications";
               //out.println(query);
 
-              out.println("<input type='text' name='container'>");
+              out.println("<input type='text' name='container_id'>");
 
               // Perform the query
               ResultSet rs = statement.executeQuery(query);
 
               // Iterate through each row of rs
-              out.println("<select name='application'>");
+              out.println("<select name='application_id'>");
               out.println("<option value=''></option>");
               while (rs.next()) {
                   m_application_name = rs.getString("application_name");
@@ -75,7 +75,7 @@ public class InventoryAdd extends HttpServlet
               Statement statement2 = dbcon.createStatement();
               String query2 = "select team_name,id from fda.teams";
               ResultSet rs2 = statement2.executeQuery(query2);
-              out.println("<select name='team'>");
+              out.println("<select name='team_id'>");
               out.println("<option value=''></option>");
               while (rs2.next())
               {
@@ -91,7 +91,7 @@ public class InventoryAdd extends HttpServlet
               Statement statement3 = dbcon.createStatement();
               String query3 = "select container_size, id from fda.containers";
               ResultSet rs3 = statement3.executeQuery(query3);
-              out.println("<select name='container'>");
+              out.println("<select name='container_size'>");
               out.println("<option value=''></option>");
               while (rs3.next())
               {
