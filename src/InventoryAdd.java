@@ -26,8 +26,8 @@ public class InventoryAdd extends HttpServlet
         String loginPasswd = "SuperSecret7@";
         String loginUrl = "jdbc:mysql://mysql1:3306/fda?allowMultiQueries=true";
 
-        List<String> m_application_id = new ArrayList<String>();
-        List<String> m_application_name = new ArrayList<String>();
+        String m_application_name = "";
+        String m_application_id = """;
 
         response.setContentType("text/html");    // Response mime type
 
@@ -54,21 +54,18 @@ public class InventoryAdd extends HttpServlet
               String query = "select application_name, id from fda.applications";
               //out.println(query);
 
-              out.println("<input type='text' name='container_id'>");
+              out.println("<input type='text' name='container'>");
 
               // Perform the query
               ResultSet rs = statement.executeQuery(query);
 
               // Iterate through each row of rs
-              while (rs.next()) {
-                  m_application_id.add(rs.getString("id"));
-                  m_application_name.add(rs.getString("application_name"));
-              }
-
               out.println("<select name='application'>");
               out.println("<option value=''></option>");
-              for (i = 0; i< m_application_name.size(); i ++ ) {
-                  out.println("<option value=" + m_application_id.get(i)+">"+m_application_name.get(i)+"</option>");
+              while (rs.next()) {
+                  m_application_name = rs2.getString("application_name");
+                  m_application_id = rs2.getString("id");
+                  out.println("<option value=" + m_application_id+">"+m_application_name+"</option>");
               }
               out.println("</select>");
 
@@ -76,14 +73,14 @@ public class InventoryAdd extends HttpServlet
               statement.close();
 
               Statement statement2 = dbcon.createStatement();
-              String query2 = "select team_name from fda.teams";
+              String query2 = "select team_name,id from fda.teams";
               ResultSet rs2 = statement2.executeQuery(query2);
               out.println("<select name='team'>");
               out.println("<option value=''></option>");
               while (rs2.next())
               {
                   String m_team_name = rs2.getString("team_name");
-                  String m_team_id = rs2.getString("team_id");
+                  String m_team_id = rs2.getString("id");
                   out.println("<option value=" + m_team_id+">"+m_team_name+"</option>");
               }
               out.println("</select>");
@@ -92,14 +89,14 @@ public class InventoryAdd extends HttpServlet
               statement2.close();
 
               Statement statement3 = dbcon.createStatement();
-              String query3 = "select container_size from fda.containers";
+              String query3 = "select container_size, id from fda.containers";
               ResultSet rs3 = statement3.executeQuery(query3);
-              out.println("<select name='container_id'>");
+              out.println("<select name='container'>");
               out.println("<option value=''></option>");
               while (rs3.next())
               {
                   String m_container_size = rs3.getString("container_size");
-                  String m_container_id = rs3.getString("container_id");
+                  String m_container_id = rs3.getString("id");
                   out.println("<option value=" + m_container_id+">"+m_container_size+"</option>");
               }
               out.println("</select>");
