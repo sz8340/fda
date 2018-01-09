@@ -63,8 +63,8 @@ public class InventoryAdd extends HttpServlet
               out.println("<select name='application'>");
               out.println("<option value=''></option>");
               while (rs.next()) {
-                  m_application_name = rs2.getString("application_name");
-                  m_application_id = rs2.getString("id");
+                  m_application_name = rs.getString("application_name");
+                  m_application_id = rs.getString("id");
                   out.println("<option value=" + m_application_id+">"+m_application_name+"</option>");
               }
               out.println("</select>");
