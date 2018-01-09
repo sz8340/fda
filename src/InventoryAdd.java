@@ -27,7 +27,7 @@ public class InventoryAdd extends HttpServlet
         String loginUrl = "jdbc:mysql://mysql1:3306/fda?allowMultiQueries=true";
 
         String m_application_name = "";
-        String m_application_id = """;
+        String m_application_id = "";
 
         response.setContentType("text/html");    // Response mime type
 
