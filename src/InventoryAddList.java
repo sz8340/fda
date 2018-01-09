@@ -34,14 +34,14 @@ public class InventoryAddList extends HttpServlet
 
         Server p = new Server();
 
+	//String m_container_id=request.getParameter("container_id");
 	String m_application_id=request.getParameter("application_id");
 	String m_team_id=request.getParameter("team_id");
 	String m_container_size=request.getParameter("container_size");
+System.out.println(m_container_id);
 System.out.println(m_application_id);
 System.out.println(m_team_id);
 System.out.println(m_container_size);
-	String m_container_id=request.getParameter("container_id");
-System.out.println(m_container_id);
 
         // Load the mm.MySQL driver
         try
@@ -53,7 +53,7 @@ System.out.println(m_container_id);
               // Declare our statement
               Statement statement = dbcon.createStatement();
 
-	      String query = "insert into fda.inventory (container_id, team_id, container_size, application_id) values (" + m_container_id + "," + m_team_id + "," + m_container_size + "," + m_application_id + ")";
+	      String query = "insert into fda.inventory (container_id, team_id, container_size, application_id) values (" + "'" +m_container_id + "'" + "," + m_team_id + "," + m_container_size + "," + m_application_id + ")";
 
               PreparedStatement preparedStmt = dbcon.prepareStatement(query);
               preparedStmt.execute();
