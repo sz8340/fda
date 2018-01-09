@@ -61,8 +61,8 @@ public class InventoryAdd extends HttpServlet
 
               // Iterate through each row of rs
               while (rs.next()) {
-                  m_application_name.add(rs.getString("application_name"));
                   m_application_id.add(rs.getString("application_id"));
+                  m_application_name.add(rs.getString("application_name"));
               }
 
               out.println("<select name='application'>");
