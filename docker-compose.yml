@@ -1,0 +1,15 @@
+version: '3.3'
+services:
+  tomcat:
+    image: tomcat:8.5.24
+    networks:
+      - tomcat_network67
+    deploy:
+      mode: replicated
+      replicas: 3
+      restart_policy:
+        condition: on-failure
+    ports:
+      - 8084:8080
+networks:
+  overlay2:

@@ -139,7 +139,9 @@ RUN set -e \
 		echo >&2 "$nativeLines"; \
 		exit 1; \
 	fi
+RUN touch /tomcat-init-complete;
 
 EXPOSE 8080
 COPY fda.war /usr/local/tomcat/webapps
+HEALTHCHECK CMD /healthcheck.sh
 CMD /usr/local/tomcat/bin/catalina.sh start && sleep infinity
