@@ -140,7 +140,7 @@ RUN set -e \
 		exit 1; \
 	fi
 RUN touch /tomcat-init-complete;
-
+COPY healthcheck.sh /healthcheck.sh
 EXPOSE 8080
 COPY fda.war /usr/local/tomcat/webapps
 HEALTHCHECK CMD /healthcheck.sh
