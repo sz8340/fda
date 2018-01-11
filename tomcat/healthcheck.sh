@@ -18,7 +18,7 @@
 # main server process is started
 if [ -f /tomcat-init-complete ]; # The entrypoint script touches this file
 then # Ping server to see if it is ready
-  curl -f http://tomcat1:8084/fda/index.jsp
+  curl -f http://localhost:8084/ || exit 1
 else # Initialization still in progress
   exit 1
 fi
