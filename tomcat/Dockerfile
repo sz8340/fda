@@ -145,7 +145,7 @@ RUN touch /tomcat-init-complete;
 COPY healthcheck.sh /healthcheck.sh
 #ENTRYPOINT ["/entrypoint.sh"]
 EXPOSE 8080
-mkdir /temp
+RUN mkdir /temp
 VOLUME /temp
 COPY fda.war /usr/local/tomcat/webapps
 HEALTHCHECK CMD /healthcheck.sh
