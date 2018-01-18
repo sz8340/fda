@@ -31,7 +31,7 @@ public class InventoryList extends HttpServlet
         // Output stream to STDOUT
         PrintWriter out = response.getWriter();
 
-        out.println("<HTML><HEAD><TITLE>Inventory List</TITLE></HEAD>");
+        out.println("<HTML><HEAD><TITLE>FDA Inventory List</TITLE></HEAD>");
         out.println("<BODY align='center'><H1>Inventory List</H1>");
 
 	String app=request.getParameter("application");
