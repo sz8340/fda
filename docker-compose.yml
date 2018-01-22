@@ -1,9 +1,7 @@
 version: '3.3'
 services:
-  tomcat:
-    image: tomcat:8.5.24
-    networks:
-      - tomcat_network67
+  tomcat1:
+    image: 18.217.122.146/fda-org/fda-repo:tomcat1
     deploy:
       mode: replicated
       replicas: 3
@@ -11,5 +9,12 @@ services:
         condition: on-failure
     ports:
       - 8084:8080
+  mysql1:
+    image: 18.217.122.146/fda-org/fda-repo:mysql1
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: on-failure
 networks:
   overlay2:

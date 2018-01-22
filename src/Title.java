@@ -30,7 +30,7 @@ public class Title extends HttpServlet
         PrintWriter out = response.getWriter();
 
         out.println("<HTML><HEAD><TITLE>Title</TITLE></HEAD>");
-        out.println("<BODY align='center' bgcolor='lightblue'><H1>FDA Management Tool</H1>");
+        out.println("<BODY align='center' bgcolor='lightblue'><H1>FDA Docker Management Tool</H1>");
 
         Server p = new Server();
         out.println("hostname: " + p.getName());
