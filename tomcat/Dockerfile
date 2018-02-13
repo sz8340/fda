@@ -144,7 +144,7 @@ RUN set -e \
 RUN touch /tomcat-init-complete;
 #COPY docker-entrypoint.sh /entrypoint.sh
 COPY healthcheck.sh /healthcheck.sh
-ENTRYPOINT ["/entrypoint.sh"]
+#ENTRYPOINT ["/entrypoint.sh"]
 EXPOSE 8080
 RUN mkdir /temp
 VOLUME ["/temp1", "/temp2"]
