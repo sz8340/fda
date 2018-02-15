@@ -16,7 +16,8 @@
 
 # The mysql-init-complete file is touched by the entrypoint file before the
 # main server process is started
-if [ -f /tomcat-init-complete ]; # The entrypoint script touches this file then Ping server to see if it is ready
+if [ -f /tomcat-init-complete ]; # The entrypoint script touches this file
+then # Ping server to see if it is ready
   curl -f http://localhost:8080/ || exit 1
 else # Initialization still in progress
   exit 1
