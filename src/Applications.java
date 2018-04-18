@@ -1,4 +1,4 @@
-// File: Applications.java  
+// File: Applications.java    
 
 /* A servlet to display the contents of the MySQL FDA database */
 
