@@ -21,11 +21,6 @@
     <h3>Field Application can not be blank!</h3>
     <%= get_application %>
   <%
-  } else if ( get_id == "" ) {
-  %>
-    <h3>Field ID can not be blank!</h3>
-    <%= get_application %>
-  <%
   } else {
   %>
     <jsp:forward page='Applications'>
